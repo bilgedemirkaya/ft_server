@@ -109,7 +109,7 @@ Requirements:
 autoindex on --> Enables Nginx auto indexing to browse your files from the web browser.
 
 ## Steps for creating the project
-First I try to understand how nginx + php-fpm + mysql work together. I installed them using ubuntu terminal and tried to use them together.
+First I try to understand how nginx + php-fpm + mysql work together. I installed them using ubuntu terminal and tried to use them together. But if you have experienced LEPM stack before you may skip this step and build your docker container.
 
 ## What is LEMP stack?
 The term LEMP is an acronym that represents the configuration of a Linux operating system with an nginx web server with site data stored in a MySQL database and dynamic content processed by PHP. 
@@ -134,8 +134,37 @@ https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-
 
 **Note:** You can only access the files you copied inside your /tmp folder. So first copy your files into tmp folder in Dockerfile. Then do your scripts (using tmp folder) to configure pages in the shell script. 
 
-
 Second Step: 
 Installing and configuring the PHP.
 https://www.digitalocean.com/community/tutorials/how-to-install-phpmyadmin-from-source-debian-10
 
+Third Step:
+Installing and configuring the Wordpress. 
+https://wordpress.org/support/article/editing-wp-config-php/
+
+Other configurations:
+Create a SSL certificate 
+https://linuxize.com/post/creating-a-self-signed-ssl-certificate/
+
+Write a autoindex script to change autoindexing while container is running throug a shell.
+
+
+### Some useful docker commands you will use throughout the project
+
+Building:
+
+``docker build -t ft_server .``
+
+Run a container:
+
+``docker run --name ft_server -d -p 443:443 -p 80:80 ft_server``
+
+Open shell:
+
+``docker exec -it ft_server bash``
+
+Note: Or you can use bash command in the initial script so it automatically opens a shell.
+
+Stop container: 
+
+``docker kill <name>``
